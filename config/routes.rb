@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  # EXAMPLE HTML ROUTE
-  # get "/photos" => "photos#index"
+  root 'pages#index'
 
-  # EXAMPLE JSON ROUTE WITH API NAMESPACE
-  # namespace :api do
-  #   get "/photos" => "photos#index"
-  # end
+  namespace :api do
+    namespace :v1 do
+      resources :organization, param: :slug
+    end
+  end
+
+  get '*path', to: "pages#index", via: :all
 end
