@@ -6,7 +6,7 @@ import Organization from './Organization/Organization'
 const App = () => {
   return (
   <Routes>
-    <Route path="/" element={<Organizations />} /> 
+    <Route exact path="/" element={<Organizations />} /> 
     <Route exact path="/organization/:slug" element={<Organization />} />
   </Routes>
   )
