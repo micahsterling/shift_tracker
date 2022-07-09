@@ -1,13 +1,16 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
-import Organizations from './Organizations/Organization'
-import Organization from './Organization/Organization'
+import Shifts from './Shifts'
+import User from './User'
+import Organizations from './Organizations/Organizations'
+// import Organization from './Organization/Organization'
 
 const App = () => {
   return (
   <Routes>
-    <Route exact path="/" element={<Organizations />} /> 
-    <Route exact path="/organization/:slug" element={<Organization />} />
+    <Route exact path="/" element={<User />} /> 
+    <Route exact path="/organizations" element={<Organizations />} /> 
+    <Route exact path="/organizations/:slug" element={<Shifts />} />
   </Routes>
   )
 }
