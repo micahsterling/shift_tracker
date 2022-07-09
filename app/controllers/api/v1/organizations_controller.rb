@@ -16,7 +16,7 @@ class Api::V1::OrganizationsController < ApplicationController
     organization = Organization.new(organization_params)
     
     if organization.save
-      render json: OrganizationSerializer.new(organization).serialized_jsonn
+      render json: OrganizationSerializer.new(organization).serialized_json
     else
       render json: {error: organization.errors.messages}, status: 422
     end
@@ -45,7 +45,7 @@ class Api::V1::OrganizationsController < ApplicationController
   private
 
     def organization_params
-      params.require(:organization).permit(:name, :hourly_rate)
+      params.require(:organization).permit(:name, :hourly_rate, :organization_id)
     end
 
     def options
