@@ -51,7 +51,50 @@ const Shifts = () => {
           </thead>
           <tbody>
             {tData}
-
+            <tr>
+              <td>
+                <input 
+                type='text' 
+                name='name' 
+                required='required' 
+                placeholder='name'
+                /> 
+              </td>
+              <td>
+                <input 
+                type='dateTime' 
+                name='date' 
+                required='required' 
+                placeholder='Shift Date'
+                /> 
+              </td>
+              <td>
+                <input 
+                type='dateTime' 
+                name='start' 
+                required='required' 
+                placeholder='Start time'
+                /> 
+              </td>
+              <td>
+                <input 
+                type='dateTime' 
+                name='end' 
+                required='required' 
+                placeholder='End time'
+                /> 
+              </td>
+              <td>
+                <input 
+                type='text' 
+                name='break_length'  
+                placeholder='Break length'
+                /> 
+              </td>
+              <td>
+                <button type='submit'>Add Shiftt</button>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
