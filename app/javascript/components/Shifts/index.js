@@ -1,27 +1,27 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import moment from 'moment'
+import './Shift.css'
 
 const Shifts = () => {
   const [shift,setShift] = useState([])
 
   
-  const list = shift.map( item => {
+  const tData = shift.map( item => {
     let date = moment(item.start).format("M/DD/YYYY");
     let startTime = moment(item.start).format("h:mm a");
     let endTime = moment(item.end).format("h:mm a");
     return (
-    
-    <div> 
-      {item.userName}
-      {date}
-      {startTime}
-      {endTime}
-      {item.break_length}
-      </div>
+
+        <tr>
+          <td>{item.userName}</td>
+          <td>{date}</td>
+          <td>{startTime}</td>
+          <td>{endTime}</td>
+          {/* <td>{item.break_length}</td> */}
+        </tr>
     )
   })
-
     
   useEffect(() => {
     // Get all organizations from api
@@ -35,10 +35,28 @@ const Shifts = () => {
   }, [])
 
   return (
-    <div>
-      <div>This is the shifts page</div>
-      <div>{list}new</div>
-      <div>This is the shifts page</div>
+    <div >
+      <div className="app-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Employee Name</th>
+              <th>Shift Date</th>
+              <th>Start Time</th>
+              <th>Finish Time</th>
+              <th>Break Length (minutes)</th>
+              <th>Hours Worked</th>
+              <th>Shift Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tData}
+
+          </tbody>
+        </table>
+      </div>
+    <div>This is the shifts page</div>
+    <div>This is the shifts page</div>
     </div>
   )
 }
