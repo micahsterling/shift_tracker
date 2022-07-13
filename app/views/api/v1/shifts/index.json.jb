@@ -3,6 +3,7 @@
   userName: shift.user.name,
   start: shift.start,
   end: shift.end,
-  break_length: shift.break_length
+  break_length: shift.break_length,
+  hourly_rate: shift.organization.hourly_rate
 }
 end
