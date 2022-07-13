@@ -1,0 +1,8 @@
+{
+  id: @shift.id,
+  user_id: @shift.user_id,
+  start: @shift.start,
+  end: @shift.end,
+  break_length: @shift.break_length,
+  organization_id: @shift.organization_id
+}
