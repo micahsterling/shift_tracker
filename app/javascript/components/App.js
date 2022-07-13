@@ -1,6 +1,6 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
-import Shifts from './Shifts'
+import Shifts from './Shifts/Shifts'
 import User from './User'
 import Organizations from './Organizations/Organizations'
 // import Organization from './Organization/Organization'
