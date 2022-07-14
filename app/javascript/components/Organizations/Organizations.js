@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import Shifts from './ShiftsLink'
+import {Link} from 'react-router-dom'
 
 const Organizations = () => {
   const[organizations,setOrganizations] = useState([])
@@ -10,17 +11,25 @@ const Organizations = () => {
     // update org in state
     axios.get('/api/v1/organizations.json')
     .then( resp => {
-      setOrganizations(resp.data.data)
+      setOrganizations(resp.data)
     })
     .catch( resp => console.log(resp) )
   }, [organizations.length])
 
   const list = organizations.map( item => {
     return (
-        <Shifts 
-          key={item.attributes.name} 
-          attributes={item.attributes}
-        />
+        // <Shifts 
+        //   key={item.name} 
+        //   attributes={item.attributes}
+        // />
+        <div className='card'>
+        <div className='org name'>{item.name}</div>
+        <button className='edit'>Edit</button>
+        <button className='join'>Join</button>
+        <div className='link'>
+         <Link to={`/organizations/${item.slug}`}>Shifts</Link>
+        </div>
+      </div>
       )
     })
     
