@@ -4,8 +4,11 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :organizations, param: :slug
-      # resources :shifts
-      get "/shifts" => "shifts#index"
+      resources :shifts
+
+      
+      post "/users" => "users#create"
+      post "/sessions" => "sessions#create"
     end
   end
 
