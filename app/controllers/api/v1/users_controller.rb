@@ -1,8 +1,9 @@
 class Api::V1::UsersController < ApplicationController
+  skip_before_action :verify_authenticity_token
   def create
     user = User.new(
       name: params[:name],
-      email_address: params[:email_address],
+      email: params[:email],
       password: params[:password],
       password_confirmation: params[:password_confirmation],
     )
