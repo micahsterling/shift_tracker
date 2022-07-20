@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :organizations, param: :slug
       resources :shifts
+      resources :memberships
 
       
       post "/users" => "users#create"
