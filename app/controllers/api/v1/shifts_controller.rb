@@ -1,9 +1,9 @@
 class Api::V1::ShiftsController < ApplicationController
-
+  
   def index
-    @shifts = Shift.all
+    @shifts = Shift.where(organization_id: params[:organization_id]) 
 
-    render 'index.json.jb'
+    render 'index'
   end
 
   def create
