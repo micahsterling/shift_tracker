@@ -1,14 +1,9 @@
 class Api::V1::OrganizationsController < ApplicationController
+  # protect_from_forgery with: :null_session
   def index
-    organizations = Organization.all
+    @organizations = Organization.all
 
-    render json: OrganizationSerializer.new(organizations, options).serialized_json
-  end
-
-  def show
-    organization = Organization.find_by(slug: params[:slug])
-
-    render json: OrganizationSerializer.new(organization, options).serialized_json
+    render 'index'
   end
 
   
