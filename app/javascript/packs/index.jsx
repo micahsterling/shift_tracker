@@ -5,15 +5,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {BrowserRouter as Router, Route,Routes} from 'react-router-dom'
-import App from '../components/App'
-import PropTypes from 'prop-types'
+import App from '../App'
+import { AuthProvider } from '../context/AuthProvider'
+import './index.css'
+
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <Router>
-      <Routes>
-        <Route path="*" element={<App />} />
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="*" element= {<App />}/>
+        </Routes>
+      </AuthProvider>
     </Router>,
     document.body.appendChild(document.createElement('div')),
   )
