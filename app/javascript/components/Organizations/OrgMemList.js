@@ -1,5 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import axios from "../../api/axios";
+import AuthContext from "../../context/AuthProvider";
+
+const { currentUser, setMemberships, memberships } = useContext(AuthContext);
 
 export const Membership = (props) => {
   return (
@@ -21,11 +25,29 @@ export const Membership = (props) => {
 };
 
 export const Organization = (props) => {
+  const JoinOrg = async (e) => {
+    e.preventDefault();
+    try {
+      const resp = await axios.post(
+        "memberships.json",
+        JSON.stringify({
+          user_id: currentUser.id,
+          organization_id: props.org_id,
+        })
+      );
+      console.log("post call data", resp.data);
+      setMemberships([resp.data[0], ...memberships]);
+      console.log("memberships", memberships);
+    } catch {}
+    console.log("joined");
+  };
   return (
     <div className="card">
       <div>{props.name}</div>
       <button className="edit">Edit</button>
-      <button className="join">Join</button>
+      <button onClick={JoinOrg} className="join">
+        Join
+      </button>
     </div>
   );
 };
