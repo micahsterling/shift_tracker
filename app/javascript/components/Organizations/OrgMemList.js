@@ -3,15 +3,26 @@ import { Link } from "react-router-dom";
 import axios from "../../api/axios";
 import AuthContext from "../../context/AuthProvider";
 
-const { currentUser, setMemberships, memberships } = useContext(AuthContext);
-
 export const Membership = (props) => {
+  const { setMemberships, memberships } = useContext(AuthContext);
+  const LeaveOrg = async (e) => {
+    e.preventDefault();
+    let remove = memberships.filter((member) => member.id !== props.id);
+
+    try {
+      await axios.delete(`memberships/${props.id}`);
+      setMemberships(remove);
+    } catch (err) {
+      // alert(err);
+    }
+  };
   return (
     <div className="card">
       <div>{props.name}</div>
-      <p>Org ID: {props.org_id}</p>
       <button className="edit">Edit</button>
-      <button className="leave">Leave</button>
+      <button onClick={LeaveOrg} name={props.id} className="leave">
+        Leave
+      </button>
       <button className="link">
         <Link
           to={`/organizations/${props.slug}`}
@@ -25,6 +36,7 @@ export const Membership = (props) => {
 };
 
 export const Organization = (props) => {
+  const { currentUser, setMemberships, memberships } = useContext(AuthContext);
   const JoinOrg = async (e) => {
     e.preventDefault();
     try {
