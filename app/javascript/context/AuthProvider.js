@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React, { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext({});
@@ -17,8 +17,20 @@ export const AuthProvider = ({ children }) => {
     navigate("/");
   };
 
+  const [organizations, setOrganizations] = useState([]);
+  const [memberships, setMemberships] = useState([]);
+
   return (
-    <AuthContext.Provider value={{ logout, currentUser }}>
+    <AuthContext.Provider
+      value={{
+        logout,
+        currentUser,
+        setMemberships,
+        memberships,
+        setOrganizations,
+        organizations,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
