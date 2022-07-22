@@ -5,7 +5,6 @@ class Api::V1::OrganizationsController < ApplicationController
 
     render 'index'
   end
-
   
   def create
     organization = Organization.new(organization_params)
@@ -18,24 +17,17 @@ class Api::V1::OrganizationsController < ApplicationController
   end
   
   def update 
-    organization = Organization.find_by(slug: params[:slug])
+    @organization = Organization.find_by(id: params[:id])
+    @organization.name = params[:name] || @organization.name
+    @organization.hourly_rate = params[:hourly_rate] || @organization.hourly_rate
 
-    if organization.update(organization_params)
-      render json: OrganizationSerializer.new(organization, options).serialized_json
+    if @organization.save
+      render json: {message: "Org successfully updated!"}
     else
       render json: {error: organization.errors.messages}, status: 422
     end
   end
 
-  def destroy
-    organization = Organization.find_by(slug: params[:slug])
-
-    if organization.destroy
-      head :no_content
-    else
-      render json: {error: organization.errors.message}, status: 422
-    end
-  end
 
   private
 
