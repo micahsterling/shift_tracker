@@ -5,6 +5,7 @@ import Login from "./components/User/Login";
 import Organizations from "./components/Organizations/Organizations";
 import Signup from "./components/User/SignUp";
 import useAuth from "./hooks/UseAuth";
+import EditOrg from "./components/Organizations/OrgEdit";
 
 const App = () => {
   const { currentUser } = useAuth();
@@ -20,8 +21,9 @@ const App = () => {
     return (
       <Routes>
         <Route path="*" element={<Organizations />} />
-        <Route exact path="/organizations" element={<Organizations />} />
-        <Route exact path="/organizations/:slug" element={<Shifts />} />
+        <Route path="organizations" element={<Organizations />} />
+        <Route path="organizations/:id" element={<EditOrg />} />
+        <Route path="shifts/:slug" element={<Shifts />} />
       </Routes>
     );
   }
