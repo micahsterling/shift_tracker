@@ -1,20 +1,28 @@
 class Api::V1::OrganizationsController < ApplicationController
-  # protect_from_forgery with: :null_session
+  skip_before_action :verify_authenticity_token
+
   def index
     @organizations = Organization.all
 
     render 'index'
   end
-  
-  def create
-    organization = Organization.new(organization_params)
-    
-    if organization.save
-      render json: OrganizationSerializer.new(organization).serialized_json
-    else
-      render json: {error: organization.errors.messages}, status: 422
-    end
+
+  def show
+    @organization = Organization.find_by(id: params[:id])
+    render 'show.'
   end
+  
+  # def create
+  #   organization = Organization.new(organization_params)
+    
+  #   if organization.save
+  #     render json: OrganizationSerializer.new(organization).serialized_json
+  #   else
+  #     render json: {error: organization.errors.messages}, status: 422
+  #   end
+  # end
+
+
   
   def update 
     @organization = Organization.find_by(id: params[:id])
