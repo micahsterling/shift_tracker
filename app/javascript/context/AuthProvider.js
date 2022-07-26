@@ -14,8 +14,11 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     localStorage.clear();
+    setMemberships([]);
+    setOrganizations([]);
     navigate("/");
   };
+  const [show, setShow] = useState(true);
 
   const [organizations, setOrganizations] = useState([]);
   const [memberships, setMemberships] = useState([]);
@@ -24,6 +27,8 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider
       value={{
         logout,
+        show,
+        setShow,
         currentUser,
         setMemberships,
         memberships,
