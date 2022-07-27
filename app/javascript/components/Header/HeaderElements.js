@@ -1,7 +1,12 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.div`
-  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  max-width: 1000px;
+  align-content: center;
+  width: 100%;
+  margin: 30px;
 `;
 
 export const Title = styled.h1`
