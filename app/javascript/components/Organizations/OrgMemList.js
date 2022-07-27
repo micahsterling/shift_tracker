@@ -1,23 +1,7 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
 import axios from "../../api/axios";
 import AuthContext from "../../context/AuthProvider";
-
-// function EditOrg(props) {
-//   const { organizations, setOrganizations } = useContext(AuthContext);
-//   axios
-//     .patch(`/organizations/${props.id}`, {
-//       name: organizations.name,
-//       hourly_rate: organizations.hourly_rate,
-//     })
-//     .then((response) => console.log(response.data))
-//     .catch((error) => console.log(error));
-//   return (
-//     <div>
-//       <h1>edit page</h1>
-//     </div>
-//   );
-// }
+import { Button, BtnLink, BtnWrapper, OrgTitle, Card } from "./OrgMemElements";
 
 export const Membership = (props) => {
   const { memberships, setMemberships } = useContext(AuthContext);
@@ -33,20 +17,25 @@ export const Membership = (props) => {
     }
   };
   return (
-    <div className="card">
-      <div>{props.name}</div>
-      <button className="edit">
-        <Link to={`/organizations/${props.org_id}`}>Edit</Link>
-      </button>
-      <button onClick={LeaveOrg} name={props.id} className="leave">
-        Leave
-      </button>
-      <button className="link">
-        <Link to={`/shifts/${props.slug}`} state={[props.name, props.org_id]}>
-          View Shifts
-        </Link>
-      </button>
-    </div>
+    <Card>
+      <OrgTitle>{props.name}</OrgTitle>
+      <BtnWrapper>
+        <Button>
+          <BtnLink
+            to={`/shifts/${props.slug}`}
+            state={[props.name, props.org_id]}
+          >
+            View Shifts
+          </BtnLink>
+        </Button>
+        <Button>
+          <BtnLink to={`/organizations/${props.org_id}`}>Edit</BtnLink>
+        </Button>
+        <Button onClick={LeaveOrg} name={props.id}>
+          Leave
+        </Button>
+      </BtnWrapper>
+    </Card>
   );
 };
 
@@ -68,14 +57,14 @@ export const Organization = (props) => {
     } catch {}
   };
   return (
-    <div className="card">
-      <div>{props.name}</div>
-      <button className="edit">
+    <Card>
+      <OrgTitle>{props.name}</OrgTitle>
+      {/* <Button >
         <Link to={`/organizations/${props.org_id}`}>Edit</Link>
-      </button>
-      <button onClick={JoinOrg} className="join">
-        Join
-      </button>
-    </div>
+      </Button> */}
+      <BtnWrapper>
+        <Button onClick={JoinOrg}>Join</Button>
+      </BtnWrapper>
+    </Card>
   );
 };
