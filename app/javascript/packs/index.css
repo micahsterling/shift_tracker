@@ -51,10 +51,6 @@ html {
     margin-bottom: 0.5rem;
 }
 
-a, a:visited {
-    color: #9bf8ff;
-}
-
 .line {
     display: inline-block;
 }
