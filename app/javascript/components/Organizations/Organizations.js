@@ -3,7 +3,18 @@ import axios from "../../api/axios";
 import AuthContext from "../../context/AuthProvider";
 import Header from "../Header/Header";
 import { Membership, Organization } from "./OrgMemList";
-import { Body, Form, List, ListTitle, TextWrap } from "./OrgElements";
+import {
+  Body,
+  Button,
+  Container,
+  Form,
+  Input,
+  Label,
+  List,
+  ListTitle,
+  Text,
+  TextWrap,
+} from "./OrgElements";
 
 const Organizations = () => {
   const {
@@ -88,39 +99,44 @@ const Organizations = () => {
   };
 
   return (
-    <>
+    <Container>
       <Header />
       <Body>
-        <TextWrap>
-          <p>You aren't a member of an organization.</p>
-          <p>Join and existing one or create a new one.</p>
-        </TextWrap>
-        <ListTitle>My Organizations</ListTitle>
-        <List>{memberList}</List>
+        {memberships.length < 1 ? (
+          <TextWrap>
+            <Text>You aren't a member of any organizations.</Text>
+            <Text>Join an existing one or create a new one.</Text>
+          </TextWrap>
+        ) : (
+          <>
+            <ListTitle>My Organizations</ListTitle>
+            <List>{memberList}</List>
+          </>
+        )}
         <ListTitle>Organizations</ListTitle>
         <List>{orgList}</List>
-        <ListTitle>Create Organization</ListTitle>
+        <ListTitle>Create An Organization</ListTitle>
         <Form onSubmit={handleSubmit}>
-          <label>Name:</label>
-          <input
+          <Label>Name:</Label>
+          <Input
             type="text"
             name="name"
             required
             value={formData.name || ""}
             onChange={handleFormChange}
           />
-          <label>Hourly Rate: $</label>
-          <input
-            type="number"
+          <Label>Hourly Rate: $</Label>
+          <Input
+            type="float"
             name="hourly_rate"
             required="required"
             value={formData.hourly_rate || ""}
             onChange={handleFormChange}
           />
-          <input type="submit" value="Create and Join" />
+          <Button type="submit">Create and Join</Button>
         </Form>
       </Body>
-    </>
+    </Container>
   );
 };
 
