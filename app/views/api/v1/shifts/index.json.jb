@@ -1,6 +1,7 @@
 @shifts.map do |shift| {
   id: shift.id,
-  userName: shift.user.name,
+  organization_id: shift.organization.id,
+  user_name: shift.user.name,
   start: shift.start,
   end: shift.end,
   break_length: shift.break_length,
