@@ -2,27 +2,41 @@ import React, { useState, useEffect, useContext } from "react";
 import AuthContext from "../../context/AuthProvider";
 import { useLocation } from "react-router-dom";
 import axios from "../../api/axios";
-import dayjs from "dayjs";
-import "./Shift.css";
+import ShiftData from "./ShiftData";
+import Header from "../Header/Header";
+import {
+  Button,
+  Input,
+  Form,
+  ShiftContainer,
+  ShiftTitle,
+  ShiftWrapper,
+  Table,
+  Tbody,
+  TD,
+  TH,
+  THead,
+  TR,
+} from "./ShiftElements";
 
 function Shifts() {
   const SHIFT_URL = `/shifts.json`;
 
   const [shift, setShift] = useState([]);
   const [formData, setFormData] = useState({});
-  const { currentUser } = useContext(AuthContext);
+  const { currentUser, setShow } = useContext(AuthContext);
 
   const location = useLocation();
   const orgId = location.state[1];
   const orgName = location.state[0];
 
   useEffect(() => {
+    setShow(true);
     axios
       .get(SHIFT_URL, {
         params: { organization_id: orgId },
       })
       .then((resp) => {
-        console.log(resp.data);
         setShift(resp.data);
       })
       .catch((resp) => console.log(resp));
@@ -43,12 +57,13 @@ function Shifts() {
 
     const start = new Date(startData);
     const end = new Date(endData);
-
     const user_id = currentUser.id;
     const organization_id = orgId;
+
     axios
       .post(SHIFT_URL, {
         user_id: user_id,
+        user_name: currentUser.name,
         start: start,
         end: end,
         break_length: formData.break_length,
@@ -57,56 +72,49 @@ function Shifts() {
       .then((resp) => {
         setShift([resp.data, ...shift]);
       })
-      .catch((resp) => {});
+      .catch((resp) => console.log("catch", resp));
     setFormData("");
   };
 
   const tData = shift.map((item) => {
-    let date = dayjs(item.start).format("M/DD/YYYY");
-    let startTime = dayjs(item.start).format("h:mm a");
-    let endTime = dayjs(item.end).format("h:mm a");
-    let shiftLength = dayjs(item.end).diff(item.start, "hour");
-    let breakLengthHours = parseFloat(item.break_length / 60);
-    let hoursWorked = shiftLength - breakLengthHours;
-    let shiftCost = hoursWorked * item.hourly_rate;
     return (
-      <tr>
-        <td>{item.userName}</td>
-        <td>{date}</td>
-        <td>{startTime}</td>
-        <td>{endTime}</td>
-        <td>{item.break_length}</td>
-        <td>{hoursWorked.toFixed(2)}</td>
-        <td>${shiftCost.toFixed(2)}</td>
-      </tr>
+      <ShiftData
+        user_name={item.user_name}
+        date={item.date}
+        start={item.start}
+        end={item.end}
+        break_length={item.break_length}
+        hourly_rate={item.hourly_rate}
+      />
     );
   });
 
   return (
-    <div>
-      <p>Logged in as {currentUser.name}</p>
-      <h1>{orgName}</h1>
-      <div className="app-container">
-        <h2>Shifts</h2>
-        <form onSubmit={handleSubmit}>
-          <table>
-            <thead>
-              <tr>
-                <th>Employee Name</th>
-                <th>Shift Date</th>
-                <th>Start Time</th>
-                <th>Finish Time</th>
-                <th>Break Length (minutes)</th>
-                <th>Hours Worked</th>
-                <th>Shift Cost</th>
-              </tr>
-            </thead>
-            <tbody>
+    <ShiftContainer>
+      <Header />
+      <ShiftWrapper>
+        <ShiftTitle>{orgName}</ShiftTitle>
+        <Form onSubmit={handleSubmit}>
+          <Table>
+            <THead>
+              <TR>
+                <TH>Employee Name</TH>
+                <TH>Shift Date</TH>
+                <TH>Start Time</TH>
+                <TH>Finish Time</TH>
+                <TH>Break Length (minutes)</TH>
+                <TH>Hours Worked</TH>
+                <TH>Shift Cost</TH>
+              </TR>
+            </THead>
+            <Tbody>
               {tData}
-              <tr>
-                <td>{currentUser.name}</td>
-                <td>
-                  <input
+              <TR>
+                <TD name="user_name" value={formData.user_name || ""}>
+                  {currentUser.name}
+                </TD>
+                <TD>
+                  <Input
                     type="date"
                     name="date"
                     value={formData.date || ""}
@@ -114,9 +122,9 @@ function Shifts() {
                     placeholder="Shift Date"
                     onChange={handleFormChange}
                   />
-                </td>
-                <td>
-                  <input
+                </TD>
+                <TD>
+                  <Input
                     type="time"
                     name="startTime"
                     value={formData.startTime || ""}
@@ -124,9 +132,9 @@ function Shifts() {
                     placeholder="Start time"
                     onChange={handleFormChange}
                   />
-                </td>
-                <td>
-                  <input
+                </TD>
+                <TD>
+                  <Input
                     type="time"
                     name="endTime"
                     value={formData.endTime || ""}
@@ -134,25 +142,25 @@ function Shifts() {
                     placeholder="End time"
                     onChange={handleFormChange}
                   />
-                </td>
-                <td>
-                  <input
+                </TD>
+                <TD>
+                  <Input
                     type="number"
                     name="break_length"
                     value={formData.break_length || ""}
                     placeholder="Break length"
                     onChange={handleFormChange}
                   />
-                </td>
-                <td>
-                  <button type="submit">Add Shift</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </form>
-      </div>
-    </div>
+                </TD>
+                <TD>
+                  <Button type="submit">Add Shift</Button>
+                </TD>
+              </TR>
+            </Tbody>
+          </Table>
+        </Form>
+      </ShiftWrapper>
+    </ShiftContainer>
   );
 }
 
