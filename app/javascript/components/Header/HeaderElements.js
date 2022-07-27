@@ -3,10 +3,9 @@ import styled from "styled-components";
 export const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 1000px;
   align-content: center;
-  width: 100%;
   margin: 30px;
+  width: 100%;
 `;
 
 export const Title = styled.h1`
@@ -19,6 +18,7 @@ export const Title = styled.h1`
 export const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  margin: 0 0.8rem;
 `;
 
 export const Left = styled.div`
