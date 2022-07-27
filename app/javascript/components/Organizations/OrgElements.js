@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   display: flex;
@@ -14,7 +13,6 @@ export const Body = styled.div`
   justify-content: center;
   align-content: center;
   flex-direction: column;
-  /* margin: 10px 80px; */
   padding: 0 15px;
   width: 100%;
   max-width: 1000px;
