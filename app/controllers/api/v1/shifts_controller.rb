@@ -1,8 +1,7 @@
 class Api::V1::ShiftsController < ApplicationController
   
   def index
-    @shifts = Shift.where(organization_id: params[:organization_id]) 
-
+    @shifts = Shift.where(organization_id: params[:organization_id]).sort_by{|shift| shift[:start]}.reverse
     render 'index'
   end
 
@@ -17,9 +16,10 @@ class Api::V1::ShiftsController < ApplicationController
     )
 
     if @shift.save
-      render 'show.json.jb'
+      render 'show'
     else
       render json: {error: @shift.errors.messages}, status: 422
     end
   end
+
 end

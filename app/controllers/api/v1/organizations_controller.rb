@@ -1,10 +1,8 @@
 class Api::V1::OrganizationsController < ApplicationController
   skip_before_action :verify_authenticity_token
- 
 
   def index
-    @organizations = Organization.all
-
+    @organizations = Organization.all.sort_by{|org| org[:name]}
     render 'index'
   end
 

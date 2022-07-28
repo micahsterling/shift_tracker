@@ -2,8 +2,8 @@ class Api::V1::MembershipsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @memberships = Membership.where(user_id: params[:user_id]) 
-
+    @memberships = Membership.where(user_id: params[:user_id])
+    .sort_by{|mem| mem.organization[:name]}
     render 'index'
   end
 
@@ -21,7 +21,7 @@ class Api::V1::MembershipsController < ApplicationController
 
   def destroy
     @membership = Membership.find_by(id: params[:id])
-    # @membership.destroy
+    @membership.destroy
     render json: {message: "Membership successfully destroyed!"}
   end
 end
