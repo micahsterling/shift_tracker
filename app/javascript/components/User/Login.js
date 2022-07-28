@@ -27,6 +27,9 @@ const Login = () => {
 
   useEffect(() => {
     userRef.current.focus();
+  }, []);
+
+  useEffect(() => {
     setErrMsg("");
   }, [email, password]);
 
