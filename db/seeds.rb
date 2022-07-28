@@ -2,61 +2,61 @@
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 
 
-# organization = Organization.create([
-#   {
-#     name: "Bobs Burgers",
-#     hourly_rate: 10
-#   },
-#   {
-#     name: "Moes Tavern",
-#     hourly_rate: 15
-#   },
-#   {
-#     name: "Sallys Sandwiches",
-#     hourly_rate: 20
-#   },
-# ])
+organization = Organization.create([
+  {
+    name: "Bob's Burgers",
+    hourly_rate: 10
+  },
+  {
+    name: "Moe's Tavern",
+    hourly_rate: 15
+  },
+  {
+    name: "Sally's Sandwiches",
+    hourly_rate: 20
+  },
+])
 
-# user = User.create([
-#   {
-#     name: "Jane Brown",
-#     email_address: "Janeb@email.com",
-#     password: "password1",
-#     organization_id: 1
-#   },
-#   {
-#     name: "John Smith",
-#     email_address: "Johns@email.com",
-#     password: "password2",
-#     organization_id: 2
-#   },
-#   {
-#     name: "Ellen Jones",
-#     email_address: "EllenJ@email.com",
-#     password: "password3",
-#     organization_id: 3
-#   },
-# ])
+user = User.create([
+  {
+    name: "Jane Brown",
+    email: "Janeb@email.com",
+    password: "Password1@",
+    organization_id: 1
+  },
+  {
+    name: "John Smith",
+    email: "Johns@email.com",
+    password: "Password2@",
+    organization_id: 1
+  },
+  {
+    name: "Ellen Jones",
+    email: "EllenJ@email.com",
+    password: "Password3@",
+    organization_id: 1
+  },
+])
 
-# shift = Shift.create([
-#   {
-#     user_id: 1,
-#     organization_id: 1,
-#     start: DateTime.new(2022,7,1,8),
-#     end: DateTime.new(2022,7,1,12),
-#   },
-#   {
-#     user_id: 2,
-#     organization_id: 1,
-#     start: DateTime.new(2022,7,2,8),
-#     end: DateTime.new(2022,7,2,12),
-#   },
-#   {
-#     user_id: 3,
-#     organization_id: 1,
-#     start: DateTime.new(2022,7,3,8),
-#     end: DateTime.new(2022,7,3,12),
-#   },
-# ])
+shift = Shift.create([
+  {
+    user_id: 1,
+    organization_id: 1,
+    start: DateTime.new(2022,7,1,8),
+    end: DateTime.new(2022,7,1,12),
+  },
+  {
+    user_id: 2,
+    organization_id: 1,
+    start: DateTime.new(2022,7,2,8),
+    end: DateTime.new(2022,7,2,12),
+  },
+  {
+    user_id: 3,
+    organization_id: 1,
+    start: DateTime.new(2022,7,3,8),
+    end: DateTime.new(2022,7,3,12),
+  },
+])
 
 p "data imported"
