@@ -51,9 +51,7 @@ export const Organization = (props) => {
           organization_id: props.org_id,
         })
       );
-      console.log("post call data", resp.data);
       setMemberships([resp.data[0], ...memberships]);
-      console.log("memberships", memberships);
     } catch {}
   };
   return (

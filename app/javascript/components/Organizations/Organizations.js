@@ -47,8 +47,6 @@ const Organizations = () => {
       })
       .catch((resp) => console.log("catch", resp));
   }, [setMemberships, setOrganizations]);
-  // console.log("mem", memberships);
-  // console.log("org", organizations);
 
   const memberList = memberships.map((item) => {
     return (
@@ -64,8 +62,6 @@ const Organizations = () => {
   const diff = organizations.filter(
     (org) => !memberships.find((mem) => org.name === mem.name)
   );
-
-  // console.log("diff", diff);
 
   const orgList = diff.map((item) => {
     return <Organization name={item.name} org_id={item.id} />;

@@ -39,7 +39,6 @@ function EditOrg() {
     try {
       const resp = await axios.get("organizations.json");
       setOrganizations(resp.data);
-      console.log("axios ran");
     } catch {}
   };
 
@@ -62,7 +61,6 @@ function EditOrg() {
         hourly_rate: update.hourly_rate,
       })
       .then((response) => {
-        console.log(response.data);
         navigate("/organizations");
       })
       .catch((err) => {
