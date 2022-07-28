@@ -1,17 +1,23 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "../../api/axios";
 import {
   UserWrapper,
   UserWindow,
   Form,
   Button,
+  LinkWrapper,
+  Input,
+  Aria,
   UserLink,
+  Title,
+  Label,
 } from "./UserElements";
 
 const LOGIN_URL = "/sessions";
 
 const Login = () => {
+  const userRef = useRef();
   const errRef = useRef();
   const navigate = useNavigate();
 
@@ -20,6 +26,7 @@ const Login = () => {
   const [errMsg, setErrMsg] = useState("");
 
   useEffect(() => {
+    userRef.current.focus();
     setErrMsg("");
   }, [email, password]);
 
@@ -52,37 +59,36 @@ const Login = () => {
   return (
     <UserWrapper>
       <UserWindow>
-        <p
+        <Aria
           ref={errRef}
           className={errMsg ? "errmsg" : "offscreen"}
           aria-live="assertive"
         >
           {errMsg}
-        </p>
-        <h1>Please Log In</h1>
+        </Aria>
+        <Title>Please Log In</Title>
         <Form onSubmit={handleSubmit}>
-          <label htmlFor="email"> Email: </label>
-          <input
+          <Label> Email: </Label>
+          <Input
             type="email"
             id="email"
+            ref={userRef}
             onChange={(e) => setEmail(e.target.value)}
             value={email || ""}
             required
           />
-          <label htmlFor="password"> Password: </label>
-          <input
+          <Label> Password: </Label>
+          <Input
             type="password"
             id="password"
             onChange={(e) => setPassword(e.target.value)}
             value={password || ""}
             required
           />
-          <div>
-            <Button type="submit">Sign In</Button>
-          </div>
-          <UserLink>
-            <Link to="/signup">Sign Up</Link>
-          </UserLink>
+          <Button type="submit">Sign In</Button>
+          <LinkWrapper>
+            <UserLink to="/signup">Sign Up</UserLink>
+          </LinkWrapper>
         </Form>
       </UserWindow>
     </UserWrapper>

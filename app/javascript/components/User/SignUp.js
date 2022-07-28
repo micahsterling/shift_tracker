@@ -13,6 +13,12 @@ import {
   Form,
   Button,
   UserLink,
+  Input,
+  Aria,
+  Text,
+  LinkWrapper,
+  Title,
+  Label,
 } from "./UserElements";
 
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -79,17 +85,17 @@ const Register = () => {
   return (
     <UserWrapper>
       <UserWindow>
-        <p
+        <Aria
           ref={errRef}
           className={errMsg ? "errmsg" : "offscreen"}
           aria-live="assertive"
         >
           {errMsg}
-        </p>
-        <h1>Register</h1>
+        </Aria>
+        <Title>Register</Title>
         <Form onSubmit={handleSubmit}>
-          <label htmlFor="name">Name:</label>
-          <input
+          <Label>Name:</Label>
+          <Input
             type="name"
             id="name"
             ref={userRef}
@@ -98,9 +104,8 @@ const Register = () => {
             value={name}
             required
           />
-
-          <label htmlFor="email">Email:</label>
-          <input
+          <Label>Email:</Label>
+          <Input
             type="text"
             id="email"
             autoComplete="off"
@@ -108,8 +113,7 @@ const Register = () => {
             value={email}
             required
           />
-
-          <label htmlFor="password">
+          <Label>
             Password:
             <FontAwesomeIcon
               icon={faCheck}
@@ -119,8 +123,8 @@ const Register = () => {
               icon={faTimes}
               className={validPwd || !password ? "hide" : "invalid"}
             />
-          </label>
-          <input
+          </Label>
+          <Input
             type="password"
             id="password"
             onChange={(e) => setPassword(e.target.value)}
@@ -131,7 +135,7 @@ const Register = () => {
             onFocus={() => setPwdFocus(true)}
             onBlur={() => setPwdFocus(false)}
           />
-          <p
+          <Text
             id="pwdnote"
             className={pwdFocus && !validPwd ? "instructions" : "offscreen"}
           >
@@ -147,9 +151,9 @@ const Register = () => {
             <span aria-label="hashtag">#</span>{" "}
             <span aria-label="dollar sign">$</span>{" "}
             <span aria-label="percent">%</span>
-          </p>
+          </Text>
 
-          <label htmlFor="confirm_pwd">
+          <Label>
             Confirm Password:
             <FontAwesomeIcon
               icon={faCheck}
@@ -159,8 +163,8 @@ const Register = () => {
               icon={faTimes}
               className={validMatch || !matchPwd ? "hide" : "invalid"}
             />
-          </label>
-          <input
+          </Label>
+          <Input
             type="password"
             id="confirm_pwd"
             onChange={(e) => setMatchPwd(e.target.value)}
@@ -171,25 +175,21 @@ const Register = () => {
             onFocus={() => setMatchFocus(true)}
             onBlur={() => setMatchFocus(false)}
           />
-          <p
+          <Text
             id="confirmnote"
             className={matchFocus && !validMatch ? "instructions" : "offscreen"}
           >
             <FontAwesomeIcon icon={faInfoCircle} />
-            Must match the first password input field.
-          </p>
-
+            Confirm password does not match.
+          </Text>
           <Button disabled={!validPwd || !validMatch ? true : false}>
             Sign Up
           </Button>
         </Form>
-        <p>
-          Already registered?
-          <br />
-          <UserLink>
-            <Link to="/">Sign In</Link>
-          </UserLink>
-        </p>
+        <Text>Already registered?</Text>
+        <LinkWrapper>
+          <UserLink to="/">Sign In</UserLink>
+        </LinkWrapper>
       </UserWindow>
     </UserWrapper>
   );

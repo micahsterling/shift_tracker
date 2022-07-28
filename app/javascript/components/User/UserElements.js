@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const UserWrapper = styled.div`
   display: flex;
@@ -30,15 +31,30 @@ export const Form = styled.form`
   background-color: #16236b;
 `;
 
+export const Label = styled.label`
+  margin: 0.35rem 0;
+`;
+
+export const Input = styled.input`
+  font-size: 22px;
+`;
+
 export const Button = styled.button`
   font-family: sans-serif;
-  font-size: 22px;
+  font-size: 20px;
   padding: 0.25rem;
-  margin-top: 0.5rem;
+  margin-top: 0.8rem;
   border-radius: 0.5rem;
   background-color: #c7d1f8;
 `;
 
-export const UserLink = styled.div`
-  color: #63ff8d;
+export const LinkWrapper = styled.div`
+  padding: 4px 0;
 `;
+export const UserLink = styled(Link)`
+  color: #9bf8ff;
+`;
+
+export const Text = styled.p``;
+export const Aria = styled.p``;
+export const Title = styled.h1``;
