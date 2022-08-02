@@ -1,24 +1,49 @@
-# README
+## Tanda Web App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Install
 
-Things you may want to cover:
+## Clone the repository
+```shell
+git clone git@github.com:micahsterling/tanda_web_app.git
+cd project
+```
+### Check your Ruby version
 
-* Ruby version
+``` shell
+ruby -v
+```
+This project is running version 3.0.0
 
-* System dependencies
+If nothing comes up or your version is lower, install ruby (it could take a while):
 
-* Configuration
+For Mac
+```shell
+brew install ruby
+```
+For windows
 
-* Database creation
+Go to rubyinsaller.org
 
-* Database initialization
+### Install dependencies
+```shell
+bundle install 
+yarn install
+```
 
-* How to run the test suite
+### Initialize the database
+```shell
+rails db:create db:migrate db:seed
+```
+### Start Server
+```shell
+rails s
+```
+### Using the App
+In a browser go to localhost:3000
 
-* Services (job queues, cache servers, search engines, etc.)
+### create a new user or use:
 
-* Deployment instructions
+email: Janeb@email.com
 
-* ...
+password: Password1@
+
