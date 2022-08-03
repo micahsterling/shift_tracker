@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import axios from "../../api/axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCheck,
@@ -19,6 +19,9 @@ import {
   LinkWrapper,
   Title,
   Label,
+  Check,
+  Hide,
+  Times,
 } from "./UserElements";
 
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -115,14 +118,8 @@ const Register = () => {
           />
           <Label>
             Password:
-            <FontAwesomeIcon
-              icon={faCheck}
-              className={validPwd ? "valid" : "hide"}
-            />
-            <FontAwesomeIcon
-              icon={faTimes}
-              className={validPwd || !password ? "hide" : "invalid"}
-            />
+            {validPwd ? <Check icon={faCheck} /> : <Hide />}
+            {validPwd || !password ? <Hide /> : <Times icon={faTimes} />}
           </Label>
           <Input
             type="password"
@@ -135,10 +132,7 @@ const Register = () => {
             onFocus={() => setPwdFocus(true)}
             onBlur={() => setPwdFocus(false)}
           />
-          <Text
-            id="pwdnote"
-            className={pwdFocus && !validPwd ? "instructions" : "offscreen"}
-          >
+          <Text id="pwdnote" show={pwdFocus && !validPwd ? true : false}>
             <FontAwesomeIcon icon={faInfoCircle} />
             8 to 24 characters.
             <br />
@@ -155,14 +149,8 @@ const Register = () => {
 
           <Label>
             Confirm Password:
-            <FontAwesomeIcon
-              icon={faCheck}
-              className={validMatch && matchPwd ? "valid" : "hide"}
-            />
-            <FontAwesomeIcon
-              icon={faTimes}
-              className={validMatch || !matchPwd ? "hide" : "invalid"}
-            />
+            {validMatch && matchPwd ? <Check icon={faCheck} /> : <Hide />}
+            {validMatch || !matchPwd ? <Hide /> : <Times icon={faTimes} />}
           </Label>
           <Input
             type="password"
@@ -177,7 +165,7 @@ const Register = () => {
           />
           <Text
             id="confirmnote"
-            className={matchFocus && !validMatch ? "instructions" : "offscreen"}
+            show={matchFocus && !validMatch ? true : false}
           >
             <FontAwesomeIcon icon={faInfoCircle} />
             Confirm password does not match.

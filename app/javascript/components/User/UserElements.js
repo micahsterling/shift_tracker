@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const UserWrapper = styled.div`
   display: flex;
@@ -55,6 +56,38 @@ export const UserLink = styled(Link)`
   color: #9bf8ff;
 `;
 
-export const Text = styled.p``;
+export const Hide = styled.p`
+  display: none;
+`;
+export const Check = styled(FontAwesomeIcon)`
+  color: limegreen;
+  margin-left: 0.25rem;
+`;
+
+export const Times = styled(FontAwesomeIcon)`
+  color: red;
+  margin-left: 0.25rem;
+`;
+
+export const Text = styled.p`
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: #000;
+  color: #fff;
+  padding: 0.25rem;
+  position: ${({ show }) => (show ? "relative" : "absolute")};
+  left: ${({ show }) => (show ? 0 : "-9999px")};
+  bottom: -10px;
+`;
+
+// .instructions > svg {
+//   margin-right: 0.25rem;
+// }
+
+// .offscreen {
+//   position: absolute;
+//   left: -9999px;
+// }
+
 export const Aria = styled.p``;
 export const Title = styled.h1``;
