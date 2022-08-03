@@ -9,7 +9,7 @@ import axios from "axios";
 
 // production baseURL
 export default axios.create({
-  baseURL: "https://tanda-web-app.herokuapp.com/",
+  baseURL: "https://tanda-web-app.herokuapp.com/api/v1",
   headers: { "Content-Type": "application/json" },
   withCredentials: true,
 });
