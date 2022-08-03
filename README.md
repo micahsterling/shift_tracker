@@ -43,7 +43,7 @@ In a browser go to localhost:3000
 
 ### create a new user or use:
 
-email: Janeb@email.com
+email: jbrown@email.com
 
-password: Password1@
+password: Password@1
 
