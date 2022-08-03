@@ -20,20 +20,20 @@ organization = Organization.create([
 user = User.create([
   {
     name: "Jane Brown",
-    email: "Janeb@email.com",
-    password: "Password1@",
+    email: "jbrown@email.com",
+    password: "Password@1",
     organization_id: 1
   },
   {
     name: "John Smith",
-    email: "Johns@email.com",
-    password: "Password2@",
+    email: "jsmith@email.com",
+    password: "Password@2",
     organization_id: 1
   },
   {
     name: "Ellen Jones",
-    email: "EllenJ@email.com",
-    password: "Password3@",
+    email: "ejones@email.com",
+    password: "Password@3",
     organization_id: 1
   },
 ])
