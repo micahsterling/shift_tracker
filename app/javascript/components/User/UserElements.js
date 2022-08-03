@@ -80,14 +80,13 @@ export const Text = styled.p`
   bottom: -10px;
 `;
 
-// .instructions > svg {
-//   margin-right: 0.25rem;
-// }
-
-// .offscreen {
-//   position: absolute;
-//   left: -9999px;
-// }
-
-export const Aria = styled.p``;
+export const Aria = styled.p`
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  position: ${({ show }) => (show ? "relative" : "absolute")};
+  left: ${({ show }) => (show ? 0 : "-9999px")};
+`;
 export const Title = styled.h1``;

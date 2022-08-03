@@ -50,7 +50,7 @@ const Login = () => {
       if (!err.response) {
         setErrMsg("No Server Response");
       } else if (err.response?.status === 400) {
-        setErrMsg("Missing Username or Password");
+        setErrMsg("Missing Email or Password");
       } else if (err.response?.status === 401) {
         setErrMsg("Unauthorized");
       } else {
@@ -62,11 +62,7 @@ const Login = () => {
   return (
     <UserWrapper>
       <UserWindow>
-        <Aria
-          ref={errRef}
-          className={errMsg ? "errmsg" : "offscreen"}
-          aria-live="assertive"
-        >
+        <Aria ref={errRef} show={errMsg ? true : false} aria-live="assertive">
           {errMsg}
         </Aria>
         <Title>Please Log In</Title>

@@ -29,11 +29,12 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const Register = () => {
   const userRef = useRef();
   const errRef = useRef();
+  const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
+  const [password, setPassword] = useState("");
   const [validPwd, setValidPwd] = useState(false);
   const [pwdFocus, setPwdFocus] = useState(false);
 
@@ -42,7 +43,6 @@ const Register = () => {
   const [matchFocus, setMatchFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState("");
-  const navigate = useNavigate();
 
   useEffect(() => {
     userRef.current.focus();
@@ -80,7 +80,13 @@ const Register = () => {
       setPassword("");
       setMatchPwd("");
     } catch (err) {
-      alert(err);
+      if (!err?.response) {
+        setErrMsg("No Server Response");
+      } else if (err.response?.status === 400) {
+        setErrMsg("Registration Not Valid");
+      } else {
+        setErrMsg("Registration Failed");
+      }
       errRef.current.focus();
     }
   };
@@ -88,11 +94,7 @@ const Register = () => {
   return (
     <UserWrapper>
       <UserWindow>
-        <Aria
-          ref={errRef}
-          className={errMsg ? "errmsg" : "offscreen"}
-          aria-live="assertive"
-        >
+        <Aria ref={errRef} show={errMsg ? true : false} aria-live="assertive">
           {errMsg}
         </Aria>
         <Title>Register</Title>
