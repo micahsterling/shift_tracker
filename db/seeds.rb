@@ -22,19 +22,16 @@ user = User.create([
     name: "Jane Brown",
     email: "jbrown@email.com",
     password: "Password@1",
-    organization_id: 1
   },
   {
     name: "John Smith",
     email: "jsmith@email.com",
     password: "Password@2",
-    organization_id: 1
   },
   {
     name: "Ellen Jones",
     email: "ejones@email.com",
     password: "Password@3",
-    organization_id: 1
   },
 ])
 
@@ -56,6 +53,21 @@ shift = Shift.create([
     organization_id: 1,
     start: DateTime.new(2022,7,3,8),
     end: DateTime.new(2022,7,3,12),
+  },
+])
+
+membership = Membership.create([
+  {
+    user_id: 1,
+    organization_id: 1,
+  },
+  {
+    user_id: 2,
+    organization_id: 1,
+  },
+  {
+    user_id: 3,
+    organization_id: 1,
   },
 ])
 
