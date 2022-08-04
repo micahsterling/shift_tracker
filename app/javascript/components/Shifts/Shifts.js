@@ -152,7 +152,7 @@ function Shifts() {
                     onChange={handleFormChange}
                   />
                 </TD>
-                <TD>
+                <TD colSpan={2}>
                   <Button type="submit">Add Shift</Button>
                 </TD>
               </TR>
