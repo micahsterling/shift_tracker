@@ -5,13 +5,12 @@ export const HeaderContainer = styled.div`
   flex-direction: column;
   align-content: center;
   margin: 30px;
-  width: 100%;
 `;
 
 export const Title = styled.h1`
   display: flex;
   justify-content: center;
-  padding: 30px 0;
+  margin: 0.67em 0;
   font-size: 40px;
 `;
 
@@ -53,6 +52,6 @@ export const Button = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: #1c84ff;
+    background-color: #a7c4f1;
   }
 `;

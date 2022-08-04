@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const ShiftContainer = styled.div`
   display: flex;
   flex-direction: column;
+  margin: 20px 40px;
 `;
 
 export const ShiftTitle = styled.h1`
@@ -12,7 +13,9 @@ export const ShiftTitle = styled.h1`
 export const ShiftWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+`;
+
+export const Form = styled.form`
   padding: 1rem;
 `;
 
@@ -22,33 +25,32 @@ export const Table = styled.table`
 `;
 
 export const THead = styled.thead`
-  background-color: rgb(117, 201, 250);
+  background-color: #75c9fa;
 `;
 
 export const TH = styled.th`
-  padding: 8px;
+  padding: 8px 6px;
 `;
 export const TR = styled.tr``;
 
-export const Tbody = styled.tbody``;
+export const Tbody = styled.tbody`
+  text-align: center;
+`;
 
 export const TD = styled.td`
-  border: 1px solid #ffffff;
-  text-align: left;
+  border: 1px solid #fff;
   padding: 8px;
   font-size: 18px;
-  background-color: rgb(205, 235, 253);
+  background-color: #c7e9fc;
 `;
 
 export const Input = styled.input`
   font-size: 100%;
   border-block-width: 1px;
+  width: 130px;
 `;
 
 export const Button = styled.button`
-  /* display: flex;
-  flex-direction: row;
-  flex-shrink: 0; */
   align-items: center;
   text-align: center;
   color: #fff;
@@ -59,19 +61,8 @@ export const Button = styled.button`
   font-size: 90%;
   padding: 5px 15px;
   cursor: pointer;
-  margin-left: 0.5rem;
 
   &:hover {
-    background-color: #1c84ff;
+    background-color: #a7c4f1;
   }
 `;
-
-export const Form = styled.form`
-  display: flex;
-  padding: 1rem;
-  gap: 8px;
-`;
-// form td:last-child {
-//   display: flex;
-//   justify-content: space-evenly;
-// }

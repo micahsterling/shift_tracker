@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 export const Card = styled.div``;
 
 export const OrgTitle = styled.p`
-  font-size: 18px;
-  padding-top: 10px;
+  font-size: 28px;
   padding-left: 10px;
+  margin: 0;
 `;
 
 export const BtnWrapper = styled.div`
@@ -24,18 +24,19 @@ export const Button = styled.button`
   background-color: #0276ff;
   border-radius: 8px;
   border-style: none;
-  font-family: "RM Neue", sans-serif;
+
   font-size: 90%;
   padding: 5px 10px;
   cursor: pointer;
   margin-right: 0.5rem;
 
   &:hover {
-    background-color: #1c84ff;
+    background-color: #a7c4f1;
   }
 `;
 
 export const BtnLink = styled(Link)`
+  font-family: "RM Neue", sans-serif;
   text-decoration: none;
   color: #fff;
 `;
@@ -50,7 +51,7 @@ export const EditContainer = styled.div`
 export const EditWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0 3rem;
+  margin: 0 8rem;
 `;
 
 export const EditTitle = styled.h1`
@@ -62,13 +63,13 @@ export const FormContainer = styled.div``;
 export const EditLabel = styled.label`
   display: flex;
   align-items: center;
-  font-size: 100%;
-  padding: 0.25rem;
+  font-size: 18px;
+  padding: 0.25rem 0;
 `;
 export const EditInput = styled.input`
   max-width: 150px;
-  font-size: 100%;
-  border-block-width: 1px;
+  font-size: 18px;
   margin-top: 0.2rem;
   margin-bottom: 0.5rem;
+  border-width: 1px;
 `;

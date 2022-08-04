@@ -24,11 +24,12 @@ export const Text = styled.p`
 `;
 export const ListTitle = styled.h1`
   padding: 10px 0;
+  margin: 0.67em 0;
 `;
 export const List = styled.div``;
 export const Form = styled.form`
   display: flex;
-  padding: 1rem;
+  padding-left: 1rem;
   gap: 8px;
 `;
 export const Label = styled.label`
@@ -39,7 +40,7 @@ export const Label = styled.label`
 export const Input = styled.input`
   max-width: 150px;
   font-size: 100%;
-  border-block-width: 1px;
+  border-width: 1px;
   margin: 0.2rem 0;
 `;
 
@@ -60,6 +61,6 @@ export const Button = styled.button`
   margin-left: 0.5rem;
 
   &:hover {
-    background-color: #1c84ff;
+    background-color: #a7c4f1;
   }
 `;
