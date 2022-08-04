@@ -18,18 +18,11 @@ function EditOrg() {
   id = parseInt(id);
 
   const { organizations, setOrganizations, setShow } = useContext(AuthContext);
-  const [setLoading] = useState(true);
-  const [update, setUpdate] = useState({});
+  const [update, setUpdate] = useState();
   const navigate = useNavigate();
 
   useEffect(() => {
     setShow(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 100);
-  }, []);
-
-  useEffect(() => {
     if (!organizations.length) {
       getOrganizations();
     }
@@ -45,13 +38,16 @@ function EditOrg() {
   let orgData = organizations.filter((org) => org.id === id);
   let org = orgData[0];
 
+  useEffect(() => {
+    setUpdate(org);
+  }, [org]);
+
   const handleFormChange = (e) => {
     e.preventDefault();
-    setUpdate(
-      Object.assign({}, update, {
-        [e.target.name]: e.target.value,
-      })
-    );
+
+    setUpdate((prevState) => {
+      return { ...prevState, [e.target.name]: e.target.value };
+    });
   };
 
   const Submit = () => {
@@ -70,7 +66,7 @@ function EditOrg() {
       });
   };
 
-  if (!organizations.length) {
+  if (update === undefined) {
     return null;
   } else {
     return (
@@ -83,14 +79,14 @@ function EditOrg() {
             <EditInput
               type="text"
               name="name"
-              value={update.name || org.name}
+              value={update.name || ""}
               onChange={handleFormChange}
             />
             <EditLabel>Hourly Rate: $</EditLabel>
             <EditInput
               type="float"
               name="hourly_rate"
-              value={update.hourly_rate || org.hourly_rate}
+              value={update.hourly_rate || ""}
               onChange={handleFormChange}
             />
             <Button onClick={Submit}>Update</Button>
