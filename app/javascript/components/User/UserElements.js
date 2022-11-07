@@ -19,7 +19,7 @@ export const UserWindow = styled.div`
   justify-content: flex-start;
   padding: 1rem;
   background-color: #16236b;
-  font-family: sans-serif;
+  font-family: "RM Neue", sans-serif;
   font-size: 22px;
   color: #fff;
 `;
@@ -41,7 +41,7 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-  font-family: sans-serif;
+  font-family: "RM Neue", sans-serif;
   font-size: 20px;
   padding: 0.25rem;
   margin-top: 0.8rem;

@@ -13,4 +13,15 @@ class Api::V1::UsersController < ApplicationController
       render json: { errors: user.errors.full_messages }, status: :bad_request
     end
   end
+  
+  # def reset
+  #   @user = User.find(params[:id])
+  #   @user.password = "password"
+  #   @user.password_confirmation = "password"
+  #   if @user.save
+  #     redirect_to users_url, notice: "Password was successfully reset!"
+  #   else
+  #     redirect_to users_url, notice: "Password reset failed"
+  #   end
+  # end
 end
