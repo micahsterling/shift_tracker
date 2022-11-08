@@ -39,20 +39,20 @@ shift = Shift.create([
   {
     user_id: 1,
     organization_id: 1,
-    start: DateTime.new(2022,7,1,8),
-    end: DateTime.new(2022,7,1,12),
+    start: DateTime.new(2022,7,1,13),
+    end: DateTime.new(2022,7,1,20),
   },
   {
     user_id: 2,
     organization_id: 1,
-    start: DateTime.new(2022,7,2,8),
-    end: DateTime.new(2022,7,2,12),
+    start: DateTime.new(2022,7,2,13),
+    end: DateTime.new(2022,7,2,20),
   },
   {
     user_id: 3,
     organization_id: 1,
-    start: DateTime.new(2022,7,3,8),
-    end: DateTime.new(2022,7,3,12),
+    start: DateTime.new(2022,7,3,13),
+    end: DateTime.new(2022,7,3,20),
   },
 ])
 
