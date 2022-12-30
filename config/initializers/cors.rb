@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'http://localhost:3000',' https://tanda-web-app.herokuapp.com', 'https://shift-tracker.up.railway.app/'
+    origins 'http://localhost:3000','https://tanda-web-app.herokuapp.com','https://shift-tracker.up.railway.app'
 
     resource '*',
       headers: :any,

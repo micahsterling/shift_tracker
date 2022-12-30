@@ -8,7 +8,7 @@ class Api::V1::OrganizationsController < ApplicationController
 
   def show
     @organization = Organization.find_by(id: params[:id])
-    render 'show.'
+    render 'show'
   end
 
   def create
