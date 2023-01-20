@@ -1,4 +1,5 @@
 {
+  "start": "react-scripts --openssl-legacy-provider start",
   "dependencies": {
     "@babel/preset-react": "^7.18.6",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
